@@ -163,9 +163,42 @@ fun main() {
 
 //    calculateSum(5)
 
-    val numbers = listOf(1,2,3,4,5)
-    val result = searchList(numbers, 3)
-    println(result)
+//    val numbers = listOf(1,2,3,4,5)
+//    val result = searchList(numbers, 3)
+//    println(result)
+
+//    val max = getMax(1,2,3,4,11,9,10)
+//    println("the maximum is $max")
+
+//    searchFor("sahibinden.com")
+//    searchFor("getir.com", "Bing")
+
+//    val sum = alternatingSum(3,4,5,2,1,2,3)
+//    println("the alternating sum is $sum")
+
+//    print("please enter a number: ")
+//    val input = readln().toIntOrNull()
+//    if(input != null){
+//        if(input.isPrime()){
+//            println("$input is a prime number")
+//        }
+//        else{
+//            println("$input is not a prime number")
+//        }
+//    }
+
+//    val numbers = listOf(1,2,3,4,5,6)
+//    val result = numbers.whatTimes()
+//    println(result)
+
+//    val myRect = Rectangle(4.0,7.0)
+//    println("rectangle area is ${myRect.area()}")
+//    println("rectangle perimeter is ${myRect.perimeter()}")
+//    println("Is rectangle a square? ${myRect.isSquare()}")
+
+//    val myCircle = Circle(5.0)
+
+    val myTriangle = Triangle(5,3,4,6)
 
 }
 
@@ -200,4 +233,50 @@ fun <T> searchList(list: List<T>, item: T): String{
     }
     return "$item is not on the list"
 }
+
+fun getMax(vararg numbers: Int): Int{
+    var max = numbers[0]
+    for(number in numbers){
+        if(number > max){
+            max = number
+        }
+    }
+    return max
+}
+
+fun searchFor(search: String, searchEngine: String = "Google"){
+    println("Searching for $search on $searchEngine")
+}
+
+fun alternatingSum(vararg numbers: Int): Int{
+    var sum = 0
+    for(i in 0 until numbers.size){
+        if(i%2 == 0){
+            sum += numbers[i]
+        }
+        else{
+            sum-= numbers[i]
+        }
+    }
+    return sum
+}
+
+fun Int.isPrime(): Boolean{ //EXTENSION FUNCTION
+    for(i in 2 until this){
+        if(this % i == 0){
+            return false
+        }
+    }
+    return true
+}
+
+fun List<Int>.whatTimes(): Int{
+    var sum = 1
+    for(i in 0 until this.size){
+        sum*=this[i]
+    }
+    return sum
+}
+
+
 
