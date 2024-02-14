@@ -198,8 +198,43 @@ fun main() {
 
 //    val myCircle = Circle(5.0)
 
-    val myTriangle = Triangle(5,3,4,6)
+//    val myTriangle = Triangle(5,3,4,6)
 
+//    val myCircle1 = Circle(5.0)
+//    myCircle1.changeName("brk")
+//    println(myCircle1.name)
+
+//    val myTriangle1 = Triangle(3,4,5,4)
+//    myTriangle1.changeName("karub")
+//    println(myTriangle1.name)
+
+//    val myCar1 = FamilyCar()
+//    myCar1.parking()
+//    println()
+//    val myCar2 = SportCar()
+//    myCar2.drifting()
+
+//    val rect = Rectangle(11.0)
+//    val circle = Circle(5.0)
+//    val triangle = Triangle(7.0,7.0,7.0, 5.0)
+//
+//    val maxArea = maxArea(rect, circle)
+//    val maxArea2 = maxArea(rect, circle, triangle)
+//
+//    println("the max area first is: $maxArea")
+//    println("the max area second is: $maxArea2")
+
+//    val numbers = listOf(1,2,3,4,5,6)
+//    val result = numbers.mySort()
+//    println(result)
+//
+//    val numbers2 = arrayOf(1,2,3,4,5)
+//    val result2 = numbers2.mySort()
+//    println(result2)
+
+//    val circle = Circle.randomCircle()
+
+    val rectangle = Rectangle.randomRectangle()
 }
 
 
@@ -276,6 +311,53 @@ fun List<Int>.whatTimes(): Int{
         sum*=this[i]
     }
     return sum
+}
+
+fun maxArea(shape1: Shape, shape2: Shape) : Double{
+    val areaShape1 = shape1.area()
+    val areaShape2 = shape2.area()
+    return if (areaShape1 > areaShape2) areaShape1 else areaShape2
+}
+fun maxArea(shape1: Shape, shape2: Shape, shape3: Shape) : Double{
+    val maxAreaShape1Shape2 = maxArea(shape1, shape2)
+    val areaShape3 = shape3.area()
+    return if (maxAreaShape1Shape2 > areaShape3) maxAreaShape1Shape2 else areaShape3
+}
+
+fun List<Int>.mySort(){
+    var i = 0
+    var j = this.size - 1
+    var toggle = true
+    println("List: $this")
+    while (i <= j){
+        if(toggle){
+            println(this[i])
+            i++
+        }
+        else{
+            println(this[j])
+            j--
+        }
+        toggle = !toggle
+    }
+}
+
+fun Array<Int>.mySort(){
+    var i = 0
+    var j = this.size - 1
+    var toggle = true
+    println("Array: $this")
+    while (i <= j){
+        if(toggle){
+            println(this[i])
+            i++
+        }
+        else{
+            println(this[j])
+            j--
+        }
+        toggle = !toggle
+    }
 }
 
 
