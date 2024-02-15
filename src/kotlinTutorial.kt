@@ -1,3 +1,4 @@
+import java.lang.NumberFormatException
 fun main() {
 //    print("bir kelime giriniz: ")
 //    val myString = readLine()
@@ -260,31 +261,71 @@ fun main() {
 //    }
 //    println("Is the parallelogram rectangle ? ${parallelogram.isRectangle()}")
 
-    val a = 4.0
-    val b = 6.0
-    val c = 6.0
-    val d = 8.0
-    val height = 4.0
-    val parallelogram = object : Shape("Trapeze",a,b,c,d,height){
-        init {
-            println("Trapeze created with a = $a, b = $b, c = $c, d = $d and height = $height")
-            println("The area is ${area()}")
-            println("The perimeter is ${perimeter()}")
-        }
+//    val a = 4.0
+//    val b = 6.0
+//    val c = 6.0
+//    val d = 8.0
+//    val height = 4.0
+//    val parallelogram = object : Shape("Trapeze",a,b,c,d,height){
+//        init {
+//            println("Trapeze created with a = $a, b = $b, c = $c, d = $d and height = $height")
+//            println("The area is ${area()}")
+//            println("The perimeter is ${perimeter()}")
+//        }
+//
+//        override fun area(): Double {
+//            return ((a+d)*height)/2
+//        }
+//
+//        override fun perimeter(): Double {
+//            return a+b+c+d
+//        }
+//    }
 
-        override fun area(): Double {
-            return ((a+d)*height)/2
-        }
+//    print("please enter the number: ")
+//    val input = try {
+//        readln()?.toInt()
+//    } catch (e: NumberFormatException){
+//        0
+//    } finally {
+//        println("This is from the finally block")
+//    }
+//    println("you entered: $input")
 
-        override fun perimeter(): Double {
-            return a+b+c+d
-        }
+//    println(divide(5.0,0.0))
+
+//    val division = try {
+//        divide(5.0,0.0)
+//    } catch (e: DivisionByZeroException){
+//        0.0
+//    }
+//    println("the result of the division is $division")
+
+//    val myCircle = Circle(-1.0)
+
+    //LAMBDA FUNCTIONS
+//    var list = (1..20).toList()
+//    println(list)
+//    list = list.filter { it % 2 == 0 }
+//    println(list)
+
+    val circle1 = Circle(5.0)
+    val circle2 = Circle(3.5)
+    val triangle1 = Triangle(4.0,5.0,3.0,4.5)
+    val triangle2 = Triangle(2.0,1.0,2.0,1.5)
+    val rectangle1 = Rectangle(2,3)
+    val rectangle2 = Rectangle(3.5)
+
+    var shapes = listOf(circle1,circle2,triangle1,triangle2,rectangle1,rectangle2)
+    shapes = shapes.customFilter() { shape, string -> shape.area() > 5.0}
+    for (shape in shapes){
+        println("${shape.name}: Area: ${shape.area()}")
     }
 
 
 
-}
 
+}
 
 fun printThreeLines(){
     println("first line")
@@ -408,5 +449,21 @@ fun Array<Int>.mySort(){
     }
 }
 
+class DivisionByZeroException : Exception("You cannot divide by zero. Please choose different number.")
 
+fun divide(a: Double, b: Double): Double{
+    if(b == 0.0){
+        throw DivisionByZeroException()
+    }
+    return a/b
+}
 
+fun List<Shape>.customFilter(filterFunction: (Shape, String) -> (Boolean)): List<Shape> {
+    val resultList = mutableListOf<Shape>()
+    for(shape in this){
+        if(filterFunction(shape, "Hello")){
+            resultList.add(shape)
+        }
+    }
+    return resultList
+}
