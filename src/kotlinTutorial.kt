@@ -234,7 +234,55 @@ fun main() {
 
 //    val circle = Circle.randomCircle()
 
-    val rectangle = Rectangle.randomRectangle()
+//    val rectangle = Rectangle.randomRectangle()
+
+    //ANONYMOUS CLASSES
+//    val a = 3.0
+//    val b = 4.0
+//    val height = 2.0
+//    val parallelogram = object : Shape("Parallelogram",a,b,height){
+//
+//        init {
+//            println("Parallelogram created with a = $a, b = $b and height = $height")
+//            println("The area is ${area()}")
+//            println("The perimeter is ${perimeter()}")
+//        }
+//
+//        override fun area(): Double {
+//            return a * height
+//        }
+//
+//        override fun perimeter(): Double {
+//            return (a+b)*2
+//        }
+//
+//        fun isRectangle(): Boolean = height == b
+//    }
+//    println("Is the parallelogram rectangle ? ${parallelogram.isRectangle()}")
+
+    val a = 4.0
+    val b = 6.0
+    val c = 6.0
+    val d = 8.0
+    val height = 4.0
+    val parallelogram = object : Shape("Trapeze",a,b,c,d,height){
+        init {
+            println("Trapeze created with a = $a, b = $b, c = $c, d = $d and height = $height")
+            println("The area is ${area()}")
+            println("The perimeter is ${perimeter()}")
+        }
+
+        override fun area(): Double {
+            return ((a+d)*height)/2
+        }
+
+        override fun perimeter(): Double {
+            return a+b+c+d
+        }
+    }
+
+
+
 }
 
 
