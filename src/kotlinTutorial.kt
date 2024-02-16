@@ -309,20 +309,25 @@ fun main() {
 //    list = list.filter { it % 2 == 0 }
 //    println(list)
 
-    val circle1 = Circle(5.0)
-    val circle2 = Circle(3.5)
-    val triangle1 = Triangle(4.0,5.0,3.0,4.5)
-    val triangle2 = Triangle(2.0,1.0,2.0,1.5)
-    val rectangle1 = Rectangle(2,3)
-    val rectangle2 = Rectangle(3.5)
+//    val circle1 = Circle(5.0)
+//    val circle2 = Circle(3.5)
+//    val triangle1 = Triangle(4.0,5.0,3.0,4.5)
+//    val triangle2 = Triangle(2.0,1.0,2.0,1.5)
+//    val rectangle1 = Rectangle(2,3)
+//    val rectangle2 = Rectangle(3.5)
+//
+//    var shapes = listOf(circle1,circle2,triangle1,triangle2,rectangle1,rectangle2)
+//    shapes = shapes.customFilter() { shape, string -> shape.area() > 5.0}
+//    for (shape in shapes){
+//        println("${shape.name}: Area: ${shape.area()}")
+//    }
 
-    var shapes = listOf(circle1,circle2,triangle1,triangle2,rectangle1,rectangle2)
-    shapes = shapes.customFilter() { shape, string -> shape.area() > 5.0}
-    for (shape in shapes){
-        println("${shape.name}: Area: ${shape.area()}")
-    }
+//    var list = (1..10).toList()
+//    val sum = list.customSum { it % 2 == 1 }
+//    println("the sum is: $sum")
 
-
+    var customTriple = CustomTriple<Int, String, Boolean>(3,"merhaba",true)
+    customTriple.printTypes()
 
 
 }
@@ -458,12 +463,23 @@ fun divide(a: Double, b: Double): Double{
     return a/b
 }
 
-fun List<Shape>.customFilter(filterFunction: (Shape, String) -> (Boolean)): List<Shape> {
-    val resultList = mutableListOf<Shape>()
-    for(shape in this){
-        if(filterFunction(shape, "Hello")){
-            resultList.add(shape)
+fun <T> List<T>.customFilter(filterFunction: (T, String) -> (Boolean)): List<T> {
+    val resultList = mutableListOf<T>()
+    for(item in this){
+        if(filterFunction(item, "Hello")){
+            resultList.add(item)
         }
     }
     return resultList
 }
+
+fun List<Int>.customSum(sumFunction: (Int) -> (Boolean)): Int {
+    var sum = 0
+    for(item in this){
+        if(sumFunction(item)){
+            sum += item
+        }
+    }
+    return sum
+}
+
