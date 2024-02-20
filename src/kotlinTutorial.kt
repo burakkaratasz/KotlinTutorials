@@ -326,8 +326,42 @@ fun main() {
 //    val sum = list.customSum { it % 2 == 1 }
 //    println("the sum is: $sum")
 
-    var customTriple = CustomTriple<Int, String, Boolean>(3,"merhaba",true)
-    customTriple.printTypes()
+//    var customTriple = CustomTriple<Int, String, Boolean>(3,"merhaba",true)
+//    customTriple.printTypes()
+
+
+//    //CUSTOM STACK AND QUEUE
+//    val myStack =  mutableListOf<Int>()
+//    myStack.add(1)
+//    myStack.add(2)
+//    myStack.add(3)
+//    val topElement = myStack.removeAt(myStack.size - 1)
+//    println(topElement)
+//
+//    val myQueue = mutableListOf<String>()
+//    myQueue.add("a")
+//    myQueue.add("b")
+//    myQueue.add("c")
+//    val frontElement = myQueue.removeAt(0)
+//    println(frontElement)
+
+    val stack = Stack<Int>()
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    val topElement = stack.pop()
+    println(topElement)
+
+    val queue = Queue<String>()
+    queue.push("a")
+    queue.push("b")
+    queue.push("c")
+    val firstElement = queue.remove()
+    println(firstElement)
+
+
+
+
 
 
 }
